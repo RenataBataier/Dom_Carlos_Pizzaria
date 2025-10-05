@@ -1,11 +1,18 @@
-body{
-    background-color: #e7c48f;
+table{
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 70%;
+  background-color: #f8f6f2;  
+  text-align: center; 
 }
 
-section{
-    background-color: rgb(255, 255, 255);
+td, th {
+  padding: 14px;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #e0d8c8;
 }
 
-h2{
-    background-color: #1c6838;
+section {
+    margin-bottom: 40px;
 }
