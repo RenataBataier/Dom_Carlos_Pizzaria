@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <title>Cardápio Dom Carlos Pizzaria</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Carlos Pizzaria</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
     <div class="container topbar" role="navigation" aria-label="Navegação principal">
@@ -24,7 +25,48 @@
       </nav>
     </div>
   </header>
-  <footer>
+  <main>
+    <div class="container">
+      <section class="promo-grid">
+
+        <a href="promocoes.html" class="card-link" aria-label="2 pizzas médias por 32,90 cada">
+          <article class="card card--portrait" style="--bg:url('imagens/familia.jpeg')">
+            <div class="ribbon">2 PIZZAS MÉDIAS</div>
+            <div class="price">
+              <span class="currency">R$</span>
+              <span class="major">32</span><span class="comma">,</span><span class="minor">90</span>
+              <span class="tag">cada</span>
+            </div>
+            <span class="cta">peça agora</span>
+          </article>
+        </a>
+
+        <a href="promocoes.html" class="card-link" aria-label="Pizza grande com refrigerante 2 litros por 64,90">
+          <article class="card card--portrait" style="--bg:url('imagens/CASAL.jpeg')">
+            <div class="ribbon">PIZZA GRANDE + REFRI 2L</div>
+            <div class="price">
+              <span class="currency">R$</span>
+              <span class="major">64</span><span class="comma">,</span><span class="minor">90</span>
+            </div>
+            <span class="cta">peça agora</span>
+          </article>
+        </a>
+
+        <a href="cardapio.html" class="card-link" aria-label="Pizza grande por 49,90">
+          <article class="card card--wide" style="--bg:url('imagens/QUEIJO.jpeg')">
+            <h3 class="banner-title">PIZZA GRANDE</h3>
+            <div class="price price--inline">
+              <span class="currency">R$</span>
+              <span class="major">49</span><span class="comma">,</span><span class="minor">90</span>
+            </div>
+            <span class="cta cta--lg">peça agora</span>
+          </article>
+        </a>
+
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
     <div class="container grid">
       <section>
         <h3>Dom Carlos Pizzaria</h3>
@@ -43,4 +85,5 @@
     </div>
   </footer>
 </body>
+
 </html>
