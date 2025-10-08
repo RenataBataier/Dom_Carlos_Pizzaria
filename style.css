@@ -3,6 +3,7 @@ body {
   font-family: system-ui, Segoe UI, Roboto, 'Helvetica Neue', Inter, Arial, sans-serif;
   color: #111;
   background: #f5efe6;
+  line-height: 1.6;
 }
 
 .container {
@@ -60,7 +61,7 @@ nav a {
   display: inline-block;
   padding: .55rem .9rem;
   color: #fff;
-  background: 165636;
+  background: #165636;
   text-decoration: none;
   border-radius: 999px;
   font-weight: 600;
@@ -75,40 +76,61 @@ nav a[aria-current="page"] {
   background: #9b2f2f
 }
 
-table{
+main {
+  padding-block: clamp(1rem, 2vw, 2rem)
+}
+
+table {
   margin: 0 auto;
   border-collapse: collapse;
   width: 70%;
-  background-color: #f8f6f2;  
-  text-align: center; 
+  background-color: #f8f6f2;
+  text-align: center;
 }
 
-td, th {
+td,
+th {
   padding: 14px;
   font-size: 15px;
-  color: #333;
+  color: #111;
   border-bottom: 1px solid #e0d8c8;
 }
 
-section {
-    margin-bottom: 40px;
+footer {
+  margin-top: 2rem;
+  background: #165636;
+  color: #fff;
+  padding: 1.25rem 0;
 }
 
-.tagline {
-  font-size: 1.2em;
-  font-weight: 400;
-  margin-top: 10px;
-  opacity: 0.9;
+footer .grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+footer a {
+  color: #fff;
+  text-decoration: none
+}
+
+footer a:hover {
+  text-decoration: underline
+}
+
+.muted {
+  color: #666;
+}
+
+/* --- PROMOCOES PAGE --- */
 .promotions-grid {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   padding: 30px 0;
 }
 
-.card {
+.promotions-grid .card {
   background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -116,12 +138,9 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  position: calc(50);
-  width: 25%;
-
 }
 
-.card:hover {
+.promotions-grid .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
@@ -130,7 +149,7 @@ section {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  display: flex;
+  display: block;
   border-bottom: 2px solid #1c6838;
 }
 
@@ -163,8 +182,8 @@ section {
 
 .card-button {
   display: inline-block;
-  background-color: #d72828;
-  color: #1c6838;
+  background-color: #e11928;
+  color: #fff;
   padding: 12px 25px;
   text-align: center;
   text-decoration: none;
@@ -177,33 +196,178 @@ section {
   background-color: #b72828;
 }
 
-.footer {
-  background-color: #d72828;
-  color: #ffffff;
-  text-align: center;
-  padding: 20px;
-  margin-top: auto;
+
+/* --- HOME PROMO GRID --- */
+.promo-grid {
+  display: grid;
+  gap: 24px;
+  margin-block: 2rem;
+}
+
+@media (min-width: 900px) {
+  .promo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .promo-grid .card--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+}
+
+.promo-grid .card {
   position: relative;
-  height: 100px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, .25);
+  isolation: isolate;
+  background:
+    linear-gradient(20deg, rgba(0, 0, 0, .55) 10%, rgba(0, 0, 0, .15) 60%),
+    var(--bg) center/cover no-repeat;
+  display: flex;
+  flex-direction: row;
 }
 
-.footer img {
+.promo-grid .card--portrait {
+  align-items: flex-end;
+  padding: 18px;
+  min-height: 360px;
+}
+
+.promo-grid .card--wide {
+  align-items: center;
+  padding: 22px;
+  height: 260px;
+}
+
+.ribbon {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 140px;
+  top: 14px;
+  left: 14px;
+  background: #1457d1;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .5px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-size: .85rem;
 }
 
-@media (max-width: 768px) {
-  .logo {
-    font-size: 2em;
-  }
+.promo-grid .price {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  background: rgba(0, 0, 0, .45);
+  padding: 8px 12px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+}
 
-  .tagline {
-    font-size: 1em;
-  }
+.price .currency {
+  font-weight: 800;
+  margin-top: .55rem;
+}
 
-  .promotions-grid {
-    padding: 20px;
-  }
+.price .major {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.price .comma {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.price .minor {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 900;
+  transform: translateY(-6px);
+}
+
+.price .tag {
+  margin-left: 6px;
+  align-self: center;
+  background: #fff;
+  color: #111;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+
+.price--inline {
+  margin-left: 12px;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0;
+}
+
+.banner-title {
+  margin: 0 12px 0 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+.promo-grid .cta {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  border: none;
+  cursor: pointer;
+  background: #e11928;
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: .5px;
+  box-shadow: 0 8px 16px rgba(225, 25, 40, .35);
+}
+
+.promo-grid .cta:active {
+  transform: translateY(1px)
+}
+
+.promo-grid .cta--lg {
+  position: static;
+  margin-left: auto;
+}
+
+.card-link:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+  border-radius: 16px;
+}
+
+/* --- SOBRE PAGE --- */
+.about-cards {
+  display: grid;
+  gap: 24px;
+  margin-block: 2rem;
+}
+
+.about-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.1);
+}
+
+.about-card h2 {
+  margin-top: 0;
+  color: #165636;
 }
