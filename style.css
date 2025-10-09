@@ -88,6 +88,12 @@ table {
   text-align: center;
 }
 
+thead{
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 120px;
+}
+
 td,
 th {
   padding: 14px;
@@ -122,7 +128,6 @@ footer a:hover {
   color: #666;
 }
 
-/* --- PROMOCOES PAGE --- */
 .promotions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -133,6 +138,10 @@ footer a:hover {
 .promotions-grid .card {
   background-color: #fff;
   border-radius: 12px;
+  /* 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_overflow 
+  Pensamos em garantir que o texto nao saia para fora.
+  */
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -141,13 +150,21 @@ footer a:hover {
 }
 
 .promotions-grid .card:hover {
-  transform: translateY(-10px);
+  /* 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+  Garantir a posicao do card.
+  */
+  transform: translateY(-10px); 
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .card-image {
   width: 100%;
   height: 400px;
+  /* 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+  Vimos que precisavamos ajustar a imagem no card.
+  */
   object-fit: cover;
   display: block;
   border-bottom: 2px solid #1c6838;
@@ -196,14 +213,16 @@ footer a:hover {
   background-color: #b72828;
 }
 
-
-/* --- HOME PROMO GRID --- */
 .promo-grid {
   display: grid;
   gap: 24px;
   margin-block: 2rem;
 }
 
+/* 
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries 
+Vimos que os cards quebravam quando diminuia a tela
+*/
 @media (min-width: 900px) {
   .promo-grid {
     grid-template-columns: 1fr 1fr;
@@ -226,9 +245,9 @@ footer a:hover {
   border-radius: 16px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, .25);
   isolation: isolate;
-  background:
-    linear-gradient(20deg, rgba(0, 0, 0, .55) 10%, rgba(0, 0, 0, .15) 60%),
-    var(--bg) center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: row;
 }
@@ -240,9 +259,19 @@ footer a:hover {
 }
 
 .promo-grid .card--wide {
-  align-items: center;
+  height: 420px;
+}
+
+.promo-grid .cta--lg {
+  position: static;
+  margin-left: auto;
+  border-radius: 999px;
+}
+
+.promo-grid .card-link.card--wide .card {
+  height: 100%;
+  align-items: flex-end;
   padding: 22px;
-  height: 260px;
 }
 
 .ribbon {
@@ -252,6 +281,10 @@ footer a:hover {
   background: #1457d1;
   color: #fff;
   font-weight: 800;
+  /* 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing 
+  Tentamos melhorar a legibilidade
+  */
   letter-spacing: .5px;
   padding: 8px 12px;
   border-radius: 8px;
@@ -266,6 +299,10 @@ footer a:hover {
   background: rgba(0, 0, 0, .45);
   padding: 8px 12px;
   border-radius: 10px;
+  /* 
+  https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
+  Tentamos adicionar um efeito legal.
+  */
   backdrop-filter: blur(3px);
 }
 
@@ -345,6 +382,14 @@ footer a:hover {
 .promo-grid .cta--lg {
   position: static;
   margin-left: auto;
+  border-radius: 999px;
+}
+
+.promo-grid .card-link.card--wide .card {
+  height: 100%;
+  align-items: flex-end;
+  padding: 22px;
+  background-position: bottom;
 }
 
 .card-link:focus-visible {
@@ -353,7 +398,6 @@ footer a:hover {
   border-radius: 16px;
 }
 
-/* --- SOBRE PAGE --- */
 .about-cards {
   display: grid;
   gap: 24px;
@@ -371,3 +415,52 @@ footer a:hover {
   margin-top: 0;
   color: #165636;
 }
+
+.cta-banner {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.cta-title {
+  position: relative;
+  margin: 0 0 .75rem;
+  line-height: 1.2;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.cta-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background:
+    linear-gradient(to right,
+      currentColor 0 35%,
+      transparent 35% 65%,
+      currentColor 65% 100%);
+  opacity: .9; 
+}
+
+.cta-title > span {
+  position: relative;
+  padding: 0 .6rem;
+  background: #f5efe6;
+}
+
+.cta-sub {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.cta-sub a {
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+.cta-sub a:hover { opacity: .85; }
